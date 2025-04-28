@@ -1478,3 +1478,180 @@
                             <tr>
                                 <td>問題Ⅵ</td>
                                 <td>${sectionPoints
+                                function submitTest() {
+        try {
+            document.getElementById('message').textContent = '';
+
+            const studentInfo = {
+                name: document.getElementById('name').value || 'Unknown',
+                class: document.getElementById('class').value || 'Unknown',
+                date: document.getElementById('date').value || new Date().toISOString().split('T')[0]
+            };
+
+            const section1Score = calculateRadioSectionScore(1, 7, 2);
+            const section2Score = calculateRadioSectionScore(8, 13, 2);
+            const section3Score = calculateRadioSectionScore(14, 29, 2);
+            const section4Score = calculateTextSectionScore();
+            const section5Score = calculateRadioSectionScore(36, 39, 3);
+            const section6Score = calculateRadioSectionScore(40, 45, 3);
+
+            const sectionScores = {
+                1: section1Score,
+                2: section2Score,
+                3: section3Score,
+                4: section4Score,
+                5: section5Score,
+                6: section6Score
+            };
+
+            const totalScore = section1Score + section2Score + section3Score +
+                              section4Score + section5Score + section6Score;
+
+            saveTestResult(studentInfo, sectionScores, totalScore);
+
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('score-display').innerHTML = `
+                <div class="student-details">
+                    <p><strong>名前 (Tên):</strong> ${studentInfo.name}</p>
+                    <p><strong>クラス (Lớp):</strong> ${studentInfo.class}</p>
+                    <p><strong>日付 (Ngày):</strong> ${studentInfo.date}</p>
+                </div>
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>問題 (Phần)</th>
+                            <th>配点 (Điểm tối đa)</th>
+                            <th>得点 (Điểm đạt được)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>問題Ⅰ</td>
+                            <td>${sectionPoints[1]}</td>
+                            <td>${sectionScores[1]}</td>
+                        </tr>
+                        <tr>
+                            <td>問題Ⅱ</td>
+                            <td>${sectionPoints[2]}</td>
+                            <td>${sectionScores[2]}</td>
+                        </tr>
+                        <tr>
+                            <td>問題Ⅲ</td>
+                            <td>${sectionPoints[3]}</td>
+                            <td>${sectionScores[3]}</td>
+                        </tr>
+                        <tr>
+                            <td>問題Ⅳ</td>
+                            <td>${sectionPoints[4]}</td>
+                            <td>${sectionScores[4]}</td>
+                        </tr>
+                        <tr>
+                            <td>問題Ⅴ</td>
+                            <td>${sectionPoints[5]}</td>
+                            <td>${sectionScores[5]}</td>
+                        </tr>
+                        <tr>
+                            <td>問題Ⅵ</td>
+                            <td>${sectionPoints[6]}</td>
+                            <td>${sectionScores[6]}</td>
+                        </tr>
+                        <tr class="total">
+                            <td>合計 (Tổng)</td>
+                            <td>100</td>
+                            <td>${totalScore}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button id="export-excel" type="button">Xuất kết quả ra Excel</button>
+                <button id="reset-test" class="reset" type="button">Làm lại bài kiểm tra</button>
+            `;
+
+            // Sự kiện cho nút xuất Excel
+            document.getElementById('export-excel').addEventListener('click', () => {
+                exportToExcel(studentInfo, sectionScores, totalScore);
+            });
+
+            // Sự kiện cho nút làm lại bài kiểm tra
+            document.getElementById('reset-test').addEventListener('click', () => {
+                window.location.reload();
+            });
+
+            // Dừng bộ đếm thời gian
+            clearInterval(timerInterval);
+
+        } catch (error) {
+            document.getElementById('message').textContent = 'Có lỗi xảy ra khi nộp bài. Vui lòng thử lại.';
+            console.error(error);
+        }
+    }
+
+    // Hàm khởi động bộ đếm thời gian
+    let timerInterval;
+    function startTimer(duration) {
+        let timer = duration * 60; // Chuyển phút thành giây
+        const timerDisplay = document.getElementById('timer');
+        timerDisplay.style.display = 'block';
+
+        timerInterval = setInterval(() => {
+            const minutes = Math.floor(timer / 60);
+            const seconds = timer % 60;
+            timerDisplay.textContent = `Thời gian còn lại: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            if (timer <= 300) { // Cảnh báo khi còn 5 phút
+                timerDisplay.classList.add('warning');
+            }
+
+            if (timer <= 0) {
+                clearInterval(timerInterval);
+                alert('Hết thời gian! Bài kiểm tra sẽ tự động nộp.');
+                submitTest();
+            }
+
+            timer--;
+        }, 1000);
+    }
+
+    // Hàm kiểm tra thông tin học sinh
+    function validateStudentInfo() {
+        const name = document.getElementById('name').value.trim();
+        const className = document.getElementById('class').value.trim();
+        const date = document.getElementById('date').value;
+
+        if (!name || !className || !date) {
+            document.getElementById('message').textContent = 'Vui lòng điền đầy đủ thông tin: Tên, Lớp, Ngày.';
+            return false;
+        }
+        return true;
+    }
+
+    // Sự kiện bắt đầu bài kiểm tra
+    document.getElementById('start-test').addEventListener('click', () => {
+        if (validateStudentInfo()) {
+            document.getElementById('start-test').style.display = 'none';
+            document.getElementById('submit-test').style.display = 'inline-block';
+            document.querySelectorAll('.question-section').forEach(section => {
+                section.style.display = 'block';
+            });
+            startTimer(40); // 40 phút
+            document.getElementById('message').textContent = '';
+        }
+    });
+
+    // Sự kiện nộp bài
+    document.getElementById('submit-test').addEventListener('click', () => {
+        if (confirm('Bạn có chắc chắn muốn nộp bài không?')) {
+            submitTest();
+        }
+    });
+
+    // Xử lý khi người dùng cố rời trang trong lúc làm bài
+    window.addEventListener('beforeunload', (event) => {
+        if (document.getElementById('submit-test').style.display === 'inline-block') {
+            event.preventDefault();
+            event.returnValue = 'Bạn đang làm bài kiểm tra. Bạn có chắc chắn muốn rời khỏi trang?';
+        }
+    });
+
+</script>
+</body>
+</html>
