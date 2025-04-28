@@ -1241,15 +1241,109 @@
         };
 
         // Hàm chuẩn hóa chuỗi
-        function normalizeString(str) {
-            return str
-                .normalize('NFKC')
-                .trim()
-                .replace(/[\s\u3000]+/g, '')
-                .replace(/[。！？｡!?.、，]/g, '')
-                .toLowerCase();
+       function normalizeString(str) {
+    return str
+        .normalize('NFKC')
+        .trim()
+        .replace(/[\s\u3000]+/g, ' ')
+        .replace(/[。！？｡!?.、，]/g, '')
+        .toLowerCase();
+}
+// Hàm giả lập AI chấm điểm tự luận
+function gradeWithAI(userAnswer, correctAnswer, questionNumber) {
+    const normalizedUserAnswer = normalizeString(userAnswer);
+    const normalizedCorrectAnswer = normalizeString(correctAnswer);
+     // Kiểm tra khớp chính xác
+    if (normalizedUserAnswer === normalizedCorrectAnswer) {
+        return {
+            score: 2,
+            feedback: 'Đúng!',
+            isCorrect: true
+        };
+    }
+     // Phân tích chi tiết (giả lập AI)
+    const userWords = normalizedUserAnswer.split(' ');
+    const correctWords = normalizedCorrectAnswer.split(' ');
+    let feedback = 'Sai. ';
+    let score = 0;
+     // Kiểm tra số từ
+    if (userWords.length !== correctWords.length) {
+        feedback += `Câu trả lời có số từ không khớp (${userWords.length} từ, cần ${correctWords.length} từ). `;
+    } else {
+        // So sánh từng từ
+        let correctWordCount = 0;
+        for (let i = 0; i < userWords.length; i++) {
+            if (userWords[i] === correctWords[i]) {
+                correctWordCount++;
+            }
         }
+        // Nếu hơn 70% từ đúng vị trí, cho 1 điểm (gần đúng)
+        if (correctWordCount / correctWords.length >= 0.7) {
+            score = 1;
+            feedback = 'Gần đúng. ';
+        }
+    }
+    // Phân tích ngữ pháp và ngữ nghĩa (giả lập)
+    const questionSpecificRules = {
+        30: {
+            mustHave: ['雨が', 'ふっています', 'かさ','から', 'もって', 'ください'],
+            structure: 'Chủ ngữ + trạng ngữ + tân ngữ + động từ + trợ từ yêu cầu'
+        },
+        31: {
+            mustHave: ['今', 'ともだちが', 'まって', 'います'],
+            structure: 'Thời gian + chủ ngữ + động từ dạng ~ている + trợ động từ'
+        },
+        32: {
+            mustHave: ['らいしゅう', 'カフェへ', 'ともだち','あい', 'いきます'],
+            structure: 'Thời gian + địa điểm + mục đích + động từ'
+        },
+        33: {
+            mustHave: ['ここ','で','しゃしんを', 'とっても', 'いいですか'],
+            structure: 'Tân ngữ + hành động + câu hỏi xin phép'
+        },
+        34: {
+            mustHave: ['リンさんは', 'しずかで', 'やさしい', 'です'],
+            structure: 'Chủ ngữ + tính từ nối + tính từ + copula'
+        },
+        35: {
+            mustHave: ['つかれました','から、', 'おふろに', 'はいりたい', 'です'],
+            structure: 'Trạng thái + địa điểm + mong muốn + copula'
+        }
+    };
 
+    const rules = questionSpecificRules[questionNumber];
+    let missingWords = rules.mustHave.filter(word => !normalizedUserAnswer.includes(normalizeString(word)));
+    if (missingWords.length > 0) {
+        feedback += `Thiếu hoặc sai các từ: ${missingWords.join(', ')}. `;
+    } else if (score === 1) {
+        feedback += 'Câu đúng về từ vựng nhưng sai thứ tự. ';
+    } else {
+        feedback += 'Câu không đúng cấu trúc. ';
+    }
+
+    feedback += `Cấu trúc đúng: ${rules.structure}. Đáp án đúng: ${correctAnswer}.`;
+
+    return {
+        score,
+        feedback,
+        isCorrect: score === 2
+    };
+}
+// Hàm tính điểm cho câu tự luận
+function calculateTextSectionScore() {
+    let score = 0;
+    const textAnswers = document.querySelectorAll('textarea');
+    textAnswers.forEach((textarea, index) => {
+        const questionNumber = 30 + index;
+        const userAnswer = textarea.value.trim();
+        if (!userAnswer) return;
+
+        const correctAnswer = textAnswerKey[questionNumber];
+        const { score: questionScore } = gradeWithAI(userAnswer, correctAnswer, questionNumber);
+        score += questionScore;
+    });
+    return score;
+}
         // Hàm hiển thị đáp án đúng/sai cho câu trắc nghiệm
         function showRadioAnswerFeedback(questionNumber) {
             const questionName = `q${questionNumber}`;
