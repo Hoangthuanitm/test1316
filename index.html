@@ -816,7 +816,7 @@
             <div class="answer-feedback" id="feedback-20"></div>
         </div>
         <div class="question">
-            <p>２１ もう あさごはんを たべました。今、なにも （　　　　）。</p>
+            <p>２１ もう あさごはんを たべました。今、なにも （　　　　）。 </p>
             <div class="options" id="options-q21">
                 <div class="option">
                     <input type="radio" id="q21-1" name="q21">
@@ -846,7 +846,7 @@
                 </div>
                 <div class="option">
                     <input type="radio" id="q22-3" name="q22">
-                    <label for="q22-3">よんで</label>
+                    <label for="q22-3">たべて</label>
                 </div>
             </div>
             <div class="answer-feedback" id="feedback-22"></div>
@@ -892,15 +892,15 @@
             <div class="options" id="options-q25">
                 <div class="option">
                     <input type="radio" id="q25-1" name="q25">
-                    <label for="q25-1">まって ／ きます</label>
+                    <label for="q25-1">まって ／ まだ　きます</label>
                 </div>
                 <div class="option">
                     <input type="radio" id="q25-2" name="q25">
-                    <label for="q25-2">まって ／ きません</label>
+                    <label for="q25-2">まって ／ まだ きません</label>
                 </div>
                 <div class="option">
                     <input type="radio" id="q25-3" name="q25">
-                    <label for="q25-3">もって ／ きませんでした</label>
+                    <label for="q25-3">もって ／ まだ　きませんでした</label>
                 </div>
             </div>
             <div class="answer-feedback" id="feedback-25"></div>
@@ -989,7 +989,7 @@
             <div class="answer-feedback" id="feedback-q4-rei"></div>
         </div>
         <div class="question">
-            <p>３０ （かさ／もって／ください／ふっています／から、／あめが）。</p>
+            <p>３０ （かさ／もって／ください／を／ふっています／から、／あめが）。</p>
             <input type="text" id="q30" class="text-input" placeholder="Viết câu hoàn chỉnh">
             <div class="answer-feedback" id="feedback-30"></div>
         </div>
@@ -999,7 +999,7 @@
             <div class="answer-feedback" id="feedback-31"></div>
         </div>
         <div class="question">
-            <p>３２ （カフェへ／いきます／ともだち／に／あい／らいしゅう／に）。</p>
+            <p>３２ （カフェへ／いきます／ともだち／に／あい／らいしゅう／と）。</p>
             <input type="text" id="q32" class="text-input" placeholder="Viết câu hoàn chỉnh">
             <div class="answer-feedback" id="feedback-32"></div>
         </div>
@@ -1195,7 +1195,7 @@
                 </div>
                 <div class="option">
                     <input type="radio" id="q43-3" name="q43">
-                                        <label for="q43-3">それから、ばんごはんを 食べました。</label>
+                    <label for="q43-3">それから、ばんごはんを 食べました。</label>
                 </div>
             </div>
             <div class="answer-feedback" id="feedback-43"></div>
@@ -1287,7 +1287,7 @@
             14: 1, 15: 2, 16: 1, 17: 3, 18: 3, 19: 2, 20: 2, 21: 3, 22: 2, 23: 2, 24: 1, 25: 2, 26: 1, 27: 2, 28: 3, 29: 2, // 問題 III
             30: "あめがふっていますから、かさをもって ください。", // 問題 IV
             31: "いまともだちがまっています。", 
-            32: "らいしゅうにともだちにあいにカフェへいきます。", 
+            32: "らいしゅうともだちとカフェへあいにいきます。", 
             33: "ここでしゃしんをとってもいいですか。", 
             34: "リンさんはしずかでやさしいです。", 
             35: "つかれましたから、おふろにはいりたいです。", 
@@ -1301,63 +1301,6 @@
 
         let startTime = null;
         let timerInterval = null;
-        const originalOptions = {};
-
-        // Hàm xáo trộn mảng (Fisher-Yates shuffle)
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        // Lưu trữ các đáp án gốc khi tải trang
-        function saveOriginalOptions() {
-            for (let i = 1; i <= 45; i++) {
-                if (i >= 30 && i <= 35) continue; // Bỏ qua các câu nhập văn bản
-                const optionsContainer = document.getElementById(`options-q${i}`);
-                if (optionsContainer) {
-                    const options = Array.from(optionsContainer.querySelectorAll('.option')).map(option => ({
-                        id: option.querySelector('input').id,
-                        name: option.querySelector('input').name,
-                        label: option.querySelector('label').textContent
-                    }));
-                    originalOptions[i] = options;
-                }
-            }
-        }
-
-        // Trộn đáp án cho một câu hỏi
-        function shuffleOptions(questionNumber) {
-            const optionsContainer = document.getElementById(`options-q${questionNumber}`);
-            if (!optionsContainer || !originalOptions[questionNumber]) return;
-
-            // Lấy danh sách đáp án gốc và xáo trộn
-            const options = [...originalOptions[questionNumber]];
-            const shuffledOptions = shuffleArray(options);
-
-            // Cập nhật DOM với các đáp án đã xáo trộn
-            optionsContainer.innerHTML = '';
-            shuffledOptions.forEach((option, index) => {
-                const newId = `q${questionNumber}-${index + 1}`;
-                const optionElement = document.createElement('div');
-                optionElement.className = 'option';
-                optionElement.innerHTML = `
-                    <input type="radio" id="${newId}" name="q${questionNumber}">
-                    <label for="${newId}">${option.label}</label>
-                `;
-                optionsContainer.appendChild(optionElement);
-            });
-        }
-
-        // Trộn tất cả các đáp án khi bắt đầu bài kiểm tra
-        function shuffleAllOptions() {
-            for (let i = 1; i <= 45; i++) {
-                if (i >= 30 && i <= 35) continue; // Bỏ qua các câu nhập văn bản
-                shuffleOptions(i);
-            }
-        }
 
         function normalizeString(str) {
             return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '');
@@ -1412,7 +1355,7 @@
             }
             const userAnswer = parseInt(selectedOption.id.split('-')[1]);
             const correctAnswer = answerKey[questionNumber];
-            const correctLabel = originalOptions[questionNumber][correctAnswer - 1].label;
+            const correctLabel = document.querySelector(`#q${questionNumber}-${correctAnswer} + label`).textContent;
             if (userAnswer === correctAnswer) {
                 feedbackElement.textContent = 'Đúng!';
                 feedbackElement.classList.remove('wrong');
@@ -1560,7 +1503,7 @@
                         <tr>
                             <td>${section1Score}/${sectionPoints[1]}</td>
                             <td>${section2Score}/${sectionPoints[2]}</td>
-                            <td>${section3Score}/${sectionPoints[3]}</td>
+                                                        <td>${section3Score}/${sectionPoints[3]}</td>
                             <td>${section4Score}/${sectionPoints[4]}</td>
                             <td>${section5Score}/${sectionPoints[5]}</td>
                             <td>${section6Score}/${sectionPoints[6]}</td>
@@ -1570,92 +1513,59 @@
                         </tr>
                     </tbody>
                 </table>
-                <button onclick="window.showPasswordModal()">Lịch sử kiểm tra</button>
-                <button class="reset" onclick="window.resetTest()">Làm lại</button>
             `;
 
             scoreDisplay.innerHTML = resultTable;
             resultSection.style.display = 'block';
+            messageResult.textContent = '';
 
-            const firestoreDoc = {
-                startTime: formatTime(startTime),
-                endTime: formatTime(endTime),
-                date: dateInput,
-                name,
-                className,
-                section1: section1Score,
-                section2: section2Score,
-                section3: section3Score,
-                section4: section4Score,
-                section5: section5Score,
-                section6: section6Score,
-                section4Answers,
-                totalScore,
-                percentage,
-                evaluation,
-                timestamp: new Date()
-            };
-
-            let isValid = true;
-            for (const [key, value] of Object.entries(firestoreDoc)) {
-                if (value === undefined || value === null) {
-                    console.error(`Invalid Firestore data: ${key} is ${value}`);
-                    isValid = false;
-                }
+            try {
+                await addDoc(collection(db, 'test_results'), {
+                    name,
+                    class: className,
+                    date: dateInput,
+                    section1: section1Score,
+                    section2: section2Score,
+                    section3: section3Score,
+                    section4: section4Score,
+                    section5: section5Score,
+                    section6: section6Score,
+                    total: totalScore,
+                    percentage,
+                    evaluation,
+                    startTime: formatTime(startTime),
+                    endTime: formatTime(endTime),
+                    section4Answers
+                });
+            } catch (error) {
+                console.error('Error saving to Firestore:', error);
+                messageResult.textContent = 'Có lỗi khi lưu kết quả. Vui lòng thử lại.';
             }
 
-            if (!isValid) {
-                messageResult.textContent = 'Dữ liệu không hợp lệ. Kết quả đã được lưu cục bộ.';
-            } else {
-                try {
-                    await addDoc(collection(db, 'testHistorytuvungnguphap13-16'), firestoreDoc);
-                    messageResult.textContent = 'Kết quả đã được lưu thành công!';
-                } catch (error) {
-                    console.error('Lỗi khi lưu vào Firestore:', error);
-                    let errorMessage = 'Đã xảy ra lỗi khi lưu kết quả vào Firestore. Kết quả đã được lưu cục bộ.';
-                    if (error.code) {
-                        switch (error.code) {
-                            case 'permission-denied':
-                                errorMessage = 'Không có quyền lưu kết quả vào Firestore. Vui lòng kiểm tra cấu hình bảo mật.';
-                                break;
-                            case 'unavailable':
-                                errorMessage = 'Không thể kết nối với Firestore. Vui lòng kiểm tra kết nối mạng.';
-                                break;
-                            case 'resource-exhausted':
-                                errorMessage = 'Đã vượt quá giới hạn Firestore. Vui lòng kiểm tra hạn mức dự án.';
-                                break;
-                            default:
-                                errorMessage += ` (Mã lỗi: ${error.code})`;
-                        }
-                    }
-                    messageResult.textContent = errorMessage;
-                }
-            }
-
-            const testHistory = JSON.parse(localStorage.getItem('testHistory13-16') || '[]');
-            testHistory.push(firestoreDoc);
-            localStorage.setItem('testHistory13-16', JSON.stringify(testHistory));
-
-            document.querySelectorAll('.question-section').forEach(section => {
-                section.style.display = 'block';
-            });
+            window.scrollTo({ top: resultSection.offsetTop, behavior: 'smooth' });
         }
 
         function resetTest() {
+            document.getElementById('name').value = '';
+            document.getElementById('class').value = '';
+            document.getElementById('date').value = '';
+            document.getElementById('message-info').textContent = '';
+            document.getElementById('message-result').textContent = '';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('submit-test').style.display = 'none';
+            document.getElementById('timer').style.display = 'none';
+            clearInterval(timerInterval);
+
             document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
             document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
             document.querySelectorAll('.answer-feedback').forEach(feedback => {
                 feedback.textContent = '';
                 feedback.classList.remove('wrong');
             });
-            document.getElementById('results').style.display = 'none';
-            document.getElementById('score-display').innerHTML = '';
-            document.getElementById('message-result').textContent = '';
-            document.getElementById('submit-test').style.display = 'block';
-            document.getElementById('timer').style.display = 'block';
-            document.getElementById('timer').classList.remove('warning');
-            shuffleAllOptions();
-            startTimer();
+
+            document.querySelectorAll('.question-section').forEach(section => {
+                section.style.display = 'none';
+            });
         }
 
         document.getElementById('start-test').addEventListener('click', () => {
@@ -1673,24 +1583,13 @@
             document.querySelectorAll('.question-section').forEach(section => {
                 section.style.display = 'block';
             });
-            document.getElementById('start-test').style.display = 'none';
-            document.getElementById('history-test').style.display = 'none';
             document.getElementById('submit-test').style.display = 'block';
             document.getElementById('timer').style.display = 'block';
-            shuffleAllOptions();
             startTimer();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         document.getElementById('submit-test').addEventListener('click', submitTest);
-
-        document.getElementById('password-input').addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                checkPassword();
-            }
-        });
-
-        // Lưu các đáp án gốc khi tải trang
-        window.addEventListener('load', saveOriginalOptions);
     </script>
 </body>
 </html>
