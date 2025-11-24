@@ -953,7 +953,7 @@
         </div>
     </div>
 
-    <footer><p>© 2025 Tài liệu kiểm tra Nhật ngữ | Đã được sửa lỗi hoàn chỉnh</p></footer>
+    <footer>        <p>© 2025 Tài liệu kiểm tra | Thiết kế bởi Thuận</p></footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
@@ -1117,9 +1117,12 @@
             try {
                 await addDoc(collection(db, 'testHistorytuvungnguphap13-16'), {
                     name, class: cls, date, s1, s2, s3, s4, s5, s6, total, percent, rank,
-                    startTime: new Date(startTime).toLocaleString('vi-VN'),
-                    endTime: new Date().toLocaleString('vi-VN')
-                });
+                    startTime: startTime ? startTime.toLocaleString('vi-VN', {
+                        hour: '2-digit', minute: '2-digit', second: '2-digit'
+                    }) : 'Chưa bắt đầu',
+                    endTime: new Date().toLocaleString('vi-VN', {
+                    hour: '2-digit', minute: '2-digit', second: '2-digit'
+                    })
             } catch(e) { console.error(e); }
         }
 
