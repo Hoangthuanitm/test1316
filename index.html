@@ -16,323 +16,54 @@
             line-height: 1.6;
             color: #333;
         }
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 15px;
-            background-color: #FFFFFF;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        }
-        .header h1 {
-            font-size: 1.8em;
-            margin: 0;
-            color: #4A90E2;
-        }
-        .header h2 {
-            font-size: 1.4em;
-            margin: 10px 0;
-            color: #333;
-        }
-        .student-info {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-            border: 1px solid #E0E4EA;
-            padding: 15px;
-            border-radius: 10px;
-            background-color: #FFFFFF;
-        }
-        .student-info div {
-            margin: 10px 0;
-        }
-        .student-info label {
-            font-weight: 500;
-            color: #4A90E2;
-            display: block;
-        }
-        .student-info input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #D1D5DB;
-            border-radius: 6px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 16px;
-            transition: border-color 0.2s;
-            box-sizing: border-box;
-        }
-        .student-info input:focus {
-            border-color: #4A90E2;
-            outline: none;
-        }
-        .question-section {
-            margin-bottom: 30px;
-            background-color: #FFFFFF;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            display: none;
-        }
-        .question {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #E0E4EA;
-        }
-        .options {
-            display: flex;
-            flex-direction: column;
-        }
-        .option {
-            margin: 8px 0;
-            display: flex;
-            align-items: center;
-        }
-        .option input {
-            margin-right: 12px;
-            accent-color: #4A90E2;
-        }
-        .option label {
-            font-size: 1em;
-            color: #333;
-        }
-        .example {
-            background-color: #F9FAFB;
-            padding: 15px;
-            border-left: 4px solid #4A90E2;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-        h2 {
-            background-color: #4A90E2;
-            color: #FFFFFF;
-            padding: 12px 15px;
-            border-radius: 8px;
-            font-size: 1.3em;
-            margin-top: 0;
-        }
-        button {
-            background-color: #4A90E2;
-            color: #FFFFFF;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 20px;
-            font-size: 1em;
-            font-family: 'Roboto', sans-serif;
-            transition: background-color 0.2s, transform 0.1s;
-            margin-right: 10px;
-        }
-        button:hover {
-            background-color: #357ABD;
-            transform: translateY(-1px);
-        }
-        button.reset {
-            background-color: #EF4444;
-        }
-        button.reset:hover {
-            background-color: #DC2626;
-        }
-        .vietnamese {
-            font-family: 'Roboto', sans-serif;
-            font-style: italic;
-            color: #6B7280;
-            margin-bottom: 15px;
-            font-size: 0.95em;
-        }
-        .result-section {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #FFFFFF;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            display: none;
-        }
-        .error-message {
-            color: #EF4444;
-            margin-top: 15px;
-            font-size: 0.95em;
-        }
-        .student-details {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #F9FAFB;
-            border-radius: 8px;
-        }
-        .student-details p {
-            margin: 8px 0;
-            font-size: 1em;
-            color: #333;
-        }
-        .result-table {
-            width: 100%;
-            min-width: 800px;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        .result-table th, .result-table td {
-            border: 1px solid #E0E4EA;
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9em;
-            white-space: nowrap;
-        }
-        .result-table th {
-            background-color: #4A90E2;
-            color: #FFFFFF;
-            font-weight: 500;
-        }
-        .result-table tr:nth-child(even) {
-            background-color: #F9FAFB;
-        }
-        .result-table tr.total {
-            font-weight: bold;
-            background-color: #E5E7EB;
-        }
-        .result-section::-webkit-scrollbar {
-            height: 8px;
-        }
-        .result-section::-webkit-scrollbar-thumb {
-            background-color: #4A90E2;
-            border-radius: 4px;
-        }
-        .result-section::-webkit-scrollbar-track {
-            background-color: #F5F7FA;
-        }
-        .image-placeholder {
-            width: 150px;
-            height: 120px;
-            border: 1px dashed #D1D5DB;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 10px 0;
-            background-color: #F9FAFB;
-            font-size: 0.9em;
-            overflow: hidden;
-        }
-        .image-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px 0;
-            border-top: 1px solid #E0E4EA;
-            color: #6B7280;
-            font-size: 0.9em;
-            font-family: 'Roboto', sans-serif;
-        }
-        .correct-answer {
-            color: #4A90E2;
-        }
-        .wrong-answer {
-            color: #EF4444;
-        }
-        .answer-feedback {
-            margin-top: 8px;
-            font-size: 0.9em;
-            color: #4A90E2;
-        }
-        .answer-feedback.wrong {
-            color: #EF4444;
-        }
-        .timer {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #4A90E2;
-            color: #FFFFFF;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 1.2em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-        .timer.warning {
-            background-color: #EF4444;
-        }
-        .password-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-        .password-box {
-            background-color: #FFFFFF;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
-        .password-box input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #D1D5DB;
-            border-radius: 6px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 16px;
-        }
-        .password-box button {
-            margin: 10px 5px;
-        }
-        .password-error {
-            color: #EF4444;
-            font-size: 0.9em;
-            margin-top: 10px;
-        }
-        .rank-a {
-            color: #4A90E2;
-            font-weight: 500;
-        }
-        .rank-f {
-            color: #EF4444;
-            font-weight: 500;
-        }
-        .text-input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #D1D5DB;
-            border-radius: 6px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 16px;
-            margin-top: 10px;
-            box-sizing: border-box;
-        }
-        .text-input:focus {
-            border-color: #4A90E2;
-            outline: none;
-        }
+        .header { text-align: center; margin-bottom: 30px; padding: 15px; background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); }
+        .header h1 { font-size: 1.8em; margin: 0; color: #4A90E2; }
+        .header h2 { font-size: 1.4em; margin: 10px 0; color: #333; }
+        .student-info { display: flex; flex-direction: column; margin-bottom: 20px; border: 1px solid #E0E4EA; padding: 15px; border-radius: 10px; background-color: #FFFFFF; }
+        .student-info div { margin: 10px 0; }
+        .student-info label { font-weight: 500; color: #4A90E2; display: block; }
+        .student-info input { width: 100%; padding: 8px; border: 1px solid #D1D5DB; border-radius: 6px; font-family: 'Roboto', sans-serif; font-size: 16px; transition: border-color 0.2s; box-sizing: border-box; }
+        .student-info input:focus { border-color: #4A90E2; outline: none; }
+        .question-section { margin-bottom: 30px; background-color: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); display: none; }
+        .question { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #E0E4EA; }
+        .options { display: flex; flex-direction: column; }
+        .option { margin: 8px 0; display: flex; align-items: center; }
+        .option input { margin-right: 12px; accent-color: #4A90E2; }
+        .option label { font-size: 1em; color: #333; }
+        .example { background-color: #F9FAFB; padding: 15px; border-left: 4px solid #4A90E2; margin-bottom: 20px; border-radius: 6px; }
+        h2 { background-color: #4A90E2; color: #FFFFFF; padding: 12px 15px; border-radius: 8px; font-size: 1.3em; margin-top: 0; }
+        button { background-color: #4A90E2; color: #FFFFFF; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin-top: 20px; font-size: 1em; font-family: 'Roboto', sans-serif; transition: background-color 0.2s, transform 0.1s; margin-right: 10px; }
+        button:hover { background-color: #357ABD; transform: translateY(-1px); }
+        button.reset { background-color: #EF4444; }
+        button.reset:hover { background-color: #DC2626; }
+        .vietnamese { font-family: 'Roboto', sans-serif; font-style: italic; color: #6B7280; margin-bottom: 15px; font-size: 0.95em; }
+        .result-section { margin-top: 30px; padding: 20px; background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); overflow-x: auto; display: none; }
+        .error-message { color: #EF4444; margin-top: 15px; font-size: 0.95em; }
+        .student-details { margin-bottom: 20px; padding: 15px; background-color: #F9FAFB; border-radius: 8px; }
+        .student-details p { margin: 8px 0; font-size: 1em; color: #333; }
+        .result-table { width: 100%; min-width: 800px; border-collapse: collapse; margin-top: 15px; }
+        .result-table th, .result-table td { border: 1px solid #E0E4EA; padding: 10px; text-align: center; font-size: 0.9em; white-space: nowrap; }
+        .result-table th { background-color: #4A90E2; color: #FFFFFF; font-weight: 500; }
+        .result-table tr:nth-child(even) { background-color: #F9FAFB; }
+        .result-table tr.total { font-weight: bold; background-color: #E5E7EB; }
+        .image-placeholder { width: 150px; height: 120px; border: 1px dashed #D1D5DB; display: flex; align-items: center; justify-content: center; margin: 10px 0; background-color: #F9FAFB; font-size: 0.9em; overflow: hidden; }
+        .image-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+        footer { text-align: center; margin-top: 40px; padding: 20px 0; border-top: 1px solid #E0E4EA; color: #6B7280; font-size: 0.9em; }
+        .answer-feedback { margin-top: 8px; font-size: 0.9em; }
+        .answer-feedback.wrong { color: #EF4444; }
+        .timer { position: fixed; top: 20px; right: 20px; background-color: #4A90E2; color: #FFFFFF; padding: 10px 20px; border-radius: 8px; font-size: 1.2em; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; }
+        .timer.warning { background-color: #EF4444; }
+        .password-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 2000; }
+        .password-box { background-color: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center; max-width: 400px; width: 90%; }
+        .password-box input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #D1D5DB; border-radius: 6px; font-family: 'Roboto', sans-serif; font-size: 16px; }
+        .password-error { color: #EF4444; font-size: 0.9em; margin-top: 10px; }
+        .rank-a { color: #4A90E2; font-weight: bold; }
+        .rank-f { color: #EF4444; font-weight: bold; }
+        .text-input { width: 100%; padding: 8px; border: 1px solid #D1D5DB; border-radius: 6px; font-family: 'Roboto', sans-serif; font-size: 16px; margin-top: 10px; box-sizing: border-box; }
+        .text-input:focus { border-color: #4A90E2; outline: none; }
         @media (max-width: 600px) {
-            .timer {
-                top: 10px;
-                right: 10px;
-                font-size: 1em;
-                padding: 8px 16px;
-            }
-            .password-box {
-                width: 80%;
-            }
-            .result-section {
-                padding: 10px;
-            }
-            .result-table th, .result-table td {
-                font-size: 0.8em;
-                padding: 8px;
-            }
+            .timer { top: 10px; right: 10px; font-size: 1em; padding: 8px 16px; }
+            .result-table th, .result-table td { font-size: 0.8em; padding: 8px; }
         }
     </style>
 </head>
@@ -340,7 +71,7 @@
     <div class="header">
         <h1>模擬テスト</h1>
         <h2>第13～16課（げんごちしき：もじ・ごい／文法・読解）</h2>
-        <p>（40分 / 100点）</p>
+        <p>時間：40 分</p>
     </div>
 
     <div class="student-info">
@@ -353,10 +84,11 @@
     <button id="history-test" onclick="window.showPasswordModal()">Lịch sử kiểm tra</button>
     <div id="message-info" class="error-message"></div>
 
-    <div id="timer" class="timer" style="display:none;">Thời gian còn lại: 40:00</div>
+    <div id="timer" class="timer" style="display: none;">Thời gian còn lại: 40:00</div>
 
-    <div class="question-section">
-        <h2>問題Ⅰ．ただしい こたえを えらんでください。（2*7=14）</h2>
+    <!-- ==================== CÁC PHẦN CÂU HỎI ==================== -->
+        <div class="question-section">
+    <h2>問題Ⅰ．ただしい こたえを えらんでください。（2*7=14）</h2>
         <div class="vietnamese">Hãy chọn câu trả lời đúng</div>
         <div class="example">
             <p>れい）</p>
@@ -971,47 +703,16 @@
     </div>
 
     <div class="question-section">
-        <h2>問題Ⅳ．（　　　）のことばを ただしい じゅんばんに ならべて、かいてください。（2*6=12）</h2>
-        <div class="vietnamese">Hãy sắp xếp các từ trong （　 ） theo thứ tự đúng và viết câu hoàn chỉnh。
-        Lưu ý: Học viên viết đúng, đủ hết cả dấu chấm và phẩy,không cách. Nếu không sẽ không được tính điểm</div>
-        <div class="example">
-            <p>れい （ほん／わたし／の／これ／は）です。</p>
-            <p>→ これ は わたし の ほん です。</p>
-            <div class="answer-feedback" id="feedback-q4-rei"></div>
-        </div>
-        <div class="question">
-            <p>３０ （かさ／もって／ください／を／ふっています／から、／あめが）。</p>
-            <input type="text" id="q30" class="text-input" placeholder="Viết câu hoàn chỉnh">
-            <div class="answer-feedback" id="feedback-30"></div>
-        </div>
-        <div class="question">
-            <p>３１ （まって／います／ともだちが／いま）。</p>
-            <input type="text" id="q31" class="text-input" placeholder="Viết câu hoàn chỉnh">
-            <div class="answer-feedback" id="feedback-31"></div>
-        </div>
-        <div class="question">
-            <p>３２ （カフェへ／いきます／ともだち／に／あい／らいしゅう／と）。</p>
-            <input type="text" id="q32" class="text-input" placeholder="Viết câu hoàn chỉnh">
-            <div class="answer-feedback" id="feedback-32"></div>
-        </div>
-        <div class="question">
-            <p>３３ （いいですか／しゃしんを／とっても／で／ここ）。</p>
-            <input type="text" id="q33" class="text-input" placeholder="Viết câu hoàn chỉnh">
-            <div class="answer-feedback" id="feedback-33"></div>
-        </div>
-        <div class="question">
-            <p>３４ （リンさんは／やさしい／しずかで／です）。</p>
-            <input type="text" id="q34" class="text-input" placeholder="Viết câu hoàn chỉnh">
-            <div class="answer-feedback" id="feedback-34"></div>
-        </div>
-        <div class="question">
-            <p>３５ （おふろに／つかれました／から、／はいりたい／です）。</p>
-            <input type="text" id="q35" class="text-input" placeholder="Viết câu hoàn chỉnh">
-            <div class="answer-feedback" id="feedback-35"></div>
-        </div>
+        <h2>問題Ⅳ．（　　　）のことばを ただしい じゅんばんに ならべて、かいてください。（2×6=12）</h2>
+        <div class="vietnamese">Sắp xếp đúng thứ tự, viết đầy đủ dấu câu, không cách thừa</div>
+        <div class="question"><p>３０ （かさ／もって／ください／を／ふっています／から、／あめが）。</p><input type="text" id="q30" class="text-input" placeholder="Ví dụ: あめがふっていますから、かさをもってください。"><div class="answer-feedback" id="feedback-30"></div></div>
+        <div class="question"><p>３１ （まって／います／ともだちが／いま）。</p><input type="text" id="q31" class="text-input"><div class="answer-feedback" id="feedback-31"></div></div>
+        <div class="question"><p>３２ （カフェへ／いきます／ともだち／に／あい／らいしゅう／と）。</p><input type="text" id="q32" class="text-input"><div class="answer-feedback" id="feedback-32"></div></div>
+        <div class="question"><p>３３ （いいですか／しゃしんを／とっても／で／ここ）。</p><input type="text" id="q33" class="text-input"><div class="answer-feedback" id="feedback-33"></div></div>
+        <div class="question"><p>３４ （リンさんは／やさしい／しずかで／です）。</p><input type="text" id="q34" class="text-input"><div class="answer-feedback" id="feedback-34"></div></div>
+        <div class="question"><p>３５ （おふろに／つかれました／から、／はいりたい／です）。</p><input type="text" id="q35" class="text-input"><div class="answer-feedback" id="feedback-35"></div></div>
     </div>
-
-    <div class="question-section">
+     <div class="question-section">
         <h2>問題Ⅴ．（　　　）にはいる いちばん いいものを えらんでください。（3*4=12）</h2>
         <div class="vietnamese">Hãy chọn đáp án đúng nhất trong （　 ）</div>
         <div class="example">
@@ -1229,12 +930,15 @@
         </div>
     </div>
 
-    <button id="submit-test" style="display:none;">Nộp bài</button>
+    <button id="submit-test" style="display:none;">テストを提出する (Nộp bài)</button>
     <div id="message-result" class="error-message"></div>
 
     <div class="result-section" id="results">
-        <h2>Kết quả chấm thi</h2>
+        <h2>Kết quả chấm bài</h2>
         <div id="score-display"></div>
+        <div style="text-align:center; margin-top:20px;">
+            <button onclick="window.resetTest()" class="reset">Làm lại bài kiểm tra</button>
+        </div>
     </div>
 
     <div class="password-modal" id="password-modal">
@@ -1249,7 +953,7 @@
         </div>
     </div>
 
-    <footer>© 2025 Tài liệu kiểm tra | Thiết kế bởi Thuận</footer>
+    <footer><p>© 2025 Tài liệu kiểm tra Nhật ngữ | Đã được sửa lỗi hoàn chỉnh</p></footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
@@ -1266,146 +970,175 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // ============== ĐÁP ÁN CHÍNH XÁC 100% ==============
+        // ĐÁP ÁN ĐÃ ĐƯỢC SỬA HOÀN CHỈNH
         const answerKey = {
-            // I (7 câu × 2đ = 14)
-            1:1, 2:2, 3:1, 4:3, 5:1, 6:1, 7:2,
-            // II (6 câu × 2đ = 12)
-            8:1, 9:2, 10:3, 11:2, 12:1, 13:3,
-            // III (16 câu × 2đ = 32)
+            1:1,2:2,3:1,4:3,5:1,6:1,7:2,
+            8:1,9:2,10:3,11:2,12:1,13:3,
             14:1,15:2,16:1,17:1,18:3,19:2,20:2,21:3,22:2,23:2,24:1,25:2,26:1,27:2,28:3,29:2,
-            // IV (6 câu × 2đ = 12) – dạng viết câu
-            30:"あめがふっていますからかさをもってください",
-            31:"いまたもだちがまっています",
-            32:"らいしゅうともだちとカフェへあいにいきます",
-            33:"ここでしゃしんをとってもいいですか",
-            34:"リンさんはしずかでやさしいです",
-            35:"つかれましたからおふろにはいりたいです",
-            // V (4 câu × 3đ = 12)
+            30:"あめがふっていますから、かさをもってください。",
+            31:"いまともだちがまっています。",
+            32:"らいしゅうともだちとカフェへあいにいきます。",
+            33:"ここでしゃしんをとってもいいですか。",
+            34:"リンさんはしずかでやさしいです。",
+            35:"つかれましたから、おふろにはいりたいです。",
             36:3,37:1,38:2,39:2,
-            // VI (6 câu × 3đ = 18)
             40:1,41:3,42:1,43:2,44:3,45:3
         };
 
         const sectionPoints = {1:14,2:12,3:32,4:12,5:12,6:18};
         let startTime = null, timerInterval = null;
 
-        // Đặt ngày hôm nay
-        document.getElementById('date').value = new Date().toISOString().split('T')[0];
-
-        function normalize(str){return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'');}
-
-        function getEvaluation(p){
-            if(p>=80)return'A'; if(p>=60)return'B'; if(p>=40)return'C'; if(p>=20)return'D'; return'F';
+        // HÀM CHUẨN HÓA MẠNH HƠN – BỎ HẾT KHOẢNG TRẮNG, DẤU
+        function normalize(str) {
+            return str.normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/\s+/g, '')
+                      .replace(/[。．.]/g, '')
+                      .toLowerCase();
         }
 
-        function calcRadioScore(start,end,point){
-            let s=0;
-            for(let i=start;i<=end;i++){
-                const sel=document.querySelector(`input[name="q${i}"]:checked`);
-                if(sel && parseInt(sel.id.split('-')[2])===answerKey[i]) s+=point;
-            }
-            return s;
+        function getEvaluation(p) {
+            if (p >= 80) return 'A';
+            if (p >= 60) return 'B';
+            if (p >= 40) return 'C';
+            if (p >= 20) return 'D';
+            return 'F';
         }
 
-        function calcTextScore(start,end,point){
-            let s=0;
-            for(let i=start;i<=end;i++){
-                const user=document.getElementById('q'+i).value.trim();
-                if(normalize(user)===normalize(answerKey[i])) s+=point;
-            }
-            return s;
-        }
-
-        function startTimer(){
-            startTime=new Date();
-            const end=new Date(startTime.getTime()+40*60*1000);
-            const el=document.getElementById('timer');
-            timerInterval=setInterval(()=>{
-                const left=end-new Date();
-                if(left<=0){
-                    clearInterval(timerInterval);
-                    el.textContent='Hết giờ!';
-                    el.classList.add('warning');
-                    submitTest();
-                    return;
+        function calculateRadioScore(start, end, point) {
+            let score = 0;
+            for (let i = start; i <= end; i++) {
+                const sel = document.querySelector(`input[name="q${i}"]:checked`);
+                if (sel) {
+                    const user = parseInt(sel.id.split('-')[1]);
+                    if (user === answerKey[i]) score += point;
+                    showRadioFeedback(i);
                 }
-                const m=Math.floor(left/60000);
-                const sec=Math.floor((left%60000)/1000);
-                el.textContent=`Thời gian còn lại: ${m}:${sec<10?'0':''}${sec}`;
-                if(left<=300000) el.classList.add('warning');
-            },1000);
+            }
+            return score;
         }
 
-        window.checkPassword=()=>{if(document.getElementById('password-input').value==='112') location.href='history.html'; else document.getElementById('password-error').textContent='Sai mật khẩu';}
-        window.showPasswordModal=()=>{document.getElementById('password-modal').style.display='flex';}
-        window.closePasswordModal=()=>{document.getElementById('password-modal').style.display='none';document.getElementById('password-input').value='';}
+        function calculateTextScore(start, end, point) {
+            let score = 0;
+            for (let i = start; i <= end; i++) {
+                const user = document.getElementById(`q${i}`).value.trim();
+                if (user && normalize(user) === normalize(answerKey[i])) {
+                    score += point;
+                }
+                showTextFeedback(i);
+            }
+            return score;
+        }
 
-        async function submitTest(){
-            const name=document.getElementById('name').value.trim();
-            const cls=document.getElementById('class').value.trim();
-            const date=document.getElementById('date').value;
-            if(!name||!cls||!date){alert('Vui lòng điền đầy đủ thông tin!');return;}
+        function showRadioFeedback(q) {
+            const fb = document.getElementById(`feedback-${q}`);
+            const sel = document.querySelector(`input[name="q${q}"]:checked`);
+            if (!sel) { fb.textContent = 'Chưa chọn'; fb.classList.add('wrong'); return; }
+            const user = parseInt(sel.id.split('-')[1]);
+            if (user === answerKey[q]) {
+                fb.textContent = 'Đúng!'; fb.classList.remove('wrong');
+            } else {
+                const correctLabel = document.querySelector(`#q${q}-${answerKey[q]} + label`).textContent;
+                fb.textContent = `Sai. Đáp án đúng: ${correctLabel}`;
+                fb.classList.add('wrong');
+            }
+        }
+
+        function showTextFeedback(q) {
+            const fb = document.getElementById(`feedback-${q}`);
+            const user = document.getElementById(`q${q}`).value.trim();
+            if (!user) { fb.textContent = 'Chưa nhập'; fb.classList.add('wrong'); return; }
+            if (normalize(user) === normalize(answerKey[q])) {
+                fb.textContent = 'Đúng!'; fb.classList.remove('wrong');
+            } else {
+                fb.textContent = `Sai. Đáp án đúng: ${answerKey[q]}`;
+                fb.classList.add('wrong');
+            }
+        }
+
+        function startTimer() {
+            startTime = new Date();
+            const end = new Date(startTime.getTime() + 40*60*1000);
+            const timer = document.getElementById('timer');
+            timerInterval = setInterval(() => {
+                const left = end - new Date();
+                if (left <= 0) { clearInterval(timerInterval); timer.textContent = 'Hết giờ!'; timer.classList.add('warning'); submitTest(); return; }
+                const m = Math.floor(left/60000);
+                const s = Math.floor((left%60000)/1000);
+                timer.textContent = `Thời gian còn lại: ${m}:${s<10?'0':''}${s}`;
+                if (left <= 300000) timer.classList.add('warning');
+            }, 1000);
+        }
+
+        window.checkPassword = () => {
+            if (document.getElementById('password-input').value === '112') {
+                window.location.href = 'history.html';
+            } else {
+                document.getElementById('password-error').textContent = 'Mật khẩu sai!';
+            }
+        };
+        window.showPasswordModal = () => document.getElementById('password-modal').style.display = 'flex';
+        window.closePasswordModal = () => { document.getElementById('password-modal').style.display = 'none'; document.getElementById('password-input').value = ''; document.getElementById('password-error').textContent = ''; };
+
+        async function submitTest() {
+            const name = document.getElementById('name').value.trim();
+            const cls = document.getElementById('class').value.trim();
+            const date = document.getElementById('date').value;
+            if (!name || !cls || !date) { document.getElementById('message-result').textContent = 'Vui lòng điền đầy đủ thông tin!'; return; }
 
             clearInterval(timerInterval);
-            document.getElementById('timer').style.display='none';
+            document.getElementById('timer').style.display = 'none';
+            document.getElementById('submit-test').style.display = 'none';
 
-            const s1=calcRadioScore(1,7,2);      // I
-            const s2=calcRadioScore(8,13,2);     // II
-            const s3=calcRadioScore(14,29,2);    // III
-            const s4=calcTextScore(30,35,2);     // IV
-            const s5=calcRadioScore(36,39,3);    // V
-            const s6=calcRadioScore(40,45,3);    // VI
+            const s1 = calculateRadioScore(1,7,2);
+            const s2 = calculateRadioScore(8,13,2);
+            const s3 = calculateRadioScore(14,29,2);
+            const s4 = calculateTextScore(30,35,2);
+            const s5 = calculateRadioScore(36,39,3);
+            const s6 = calculateRadioScore(40,45,3);
+            const total = s1 + s2 + s3 + s4 + s5 + s6;
+            const percent = total;
+            const rank = getEvaluation(percent);
+            const rankClass = rank === 'A' ? 'rank-a' : rank === 'F' ? 'rank-f' : '';
 
-            const total=s1+s2+s3+s4+s5+s6;
-            const percent=total;
-            const rank=getEvaluation(percent);
-
-            document.getElementById('score-display').innerHTML=`
+            document.getElementById('score-display').innerHTML = `
                 <div class="student-details">
                     <p><strong>Họ tên:</strong> ${name}</p>
                     <p><strong>Lớp:</strong> ${cls}</p>
                     <p><strong>Ngày thi:</strong> ${date}</p>
                 </div>
-                <table class="result-table" style="width:100%;border-collapse:collapse;margin-top:15px;">
-                    <tr style="background:#4A90E2;color:#fff;"><th>I</th><th>II</th><th>III</th><th>IV</th><th>V</th><th>VI</th><th>Tổng</th><th>%</th><th>Xếp loại</th></tr>
-                    <tr>
-                        <td>${s1}/14</td><td>${s2}/12</td><td>${s3}/32</td><td>${s4}/12</td><td>${s5}/12</td><td>${s6}/18</td>
-                        <td><strong>${total}/100</strong></td><td>${percent}%</td>
-                        <td class="rank-${rank.toLowerCase()}"><strong>${rank}</strong></td>
-                    </tr>
+                <table class="result-table">
+                    <tr><th>I</th><th>II</th><th>III</th><th>IV</th><th>V</th><th>VI</th><th>Tổng</th><th>Tỷ lệ</th><th>Xếp loại</th></tr>
+                    <tr><td>${s1}/14</td><td>${s2}/12</td><td>${s3}/32</td><td>${s4}/12</td><td>${s5}/12</td><td>${s6}/18</td><td>${total}/100</td><td>${percent}%</td><td class="${rankClass}">${rank}</td></tr>
                 </table>
-                <button onclick="window.showPasswordModal()">Lịch sử kiểm tra</button>
-                <button class="reset" onclick="location.reload()">Làm lại</button>
             `;
-            document.getElementById('results').style.display='block';
+            document.getElementById('results').style.display = 'block';
 
-            // Lưu vào Firestore + localStorage
-            try{
-                await addDoc(collection(db,'testHistorytuvungnguphap13-16'),{
-                    name, class:cls, date, s1,s2,s3,s4,s5,s6,total,percent,rank,
-                    timestamp:new Date()
+            try {
+                await addDoc(collection(db, 'testHistorytuvungnguphap13-16'), {
+                    name, class: cls, date, s1, s2, s3, s4, s5, s6, total, percent, rank,
+                    startTime: new Date(startTime).toLocaleString('vi-VN'),
+                    endTime: new Date().toLocaleString('vi-VN')
                 });
-            }catch(e){console.error(e);}
-            const hist=JSON.parse(localStorage.getItem('testHistory13-16')||'[]');
-            hist.push({name,class:cls,date,s1,s2,s3,s4,s5,s6,total,percent,rank,timestamp:new Date()});
-            localStorage.setItem('testHistory13-16',JSON.stringify(hist));
+            } catch(e) { console.error(e); }
         }
 
-        document.getElementById('start-test').onclick=()=>{
-            if(!document.getElementById('name').value.trim()||!document.getElementById('class').value.trim()){
-                document.getElementById('message-info').textContent='Vui lòng nhập đầy đủ tên và lớp!';
-                return;
-            }
-            document.querySelectorAll('.question-section').forEach(s=>s.style.display='block');
-            document.getElementById('start-test').style.display='none';
-            document.getElementById('history-test').style.display='none';
-            document.getElementById('submit-test').style.display='block';
-            document.getElementById('timer').style.display='block';
-            startTimer();
+        window.resetTest = () => {
+            location.reload();
         };
 
-        document.getElementById('submit-test').onclick=submitTest;
+        document.getElementById('start-test').addEventListener('click', () => {
+            const name = document.getElementById('name').value.trim();
+            const cls = document.getElementById('class').value.trim();
+            const date = document.getElementById('date').value;
+            if (!name || !cls || !date) { document.getElementById('message-info').textContent = 'Vui lòng nhập đầy đủ thông tin cá nhân!'; return; }
+            document.querySelectorAll('.question-section').forEach(s => s.style.display = 'block');
+            document.getElementById('submit-test').style.display = 'block';
+            document.getElementById('timer').style.display = 'block';
+            startTimer();
+        });
+
+        document.getElementById('submit-test').addEventListener('click', submitTest);
     </script>
 </body>
 </html>
